@@ -8,58 +8,137 @@
 		<true/>
 		<key>DSDT</key>
 		<dict>
-			<key>DropOEM_DSM</key>
-			<dict>
-				<key>ATI</key>
-				<false/>
-				<key>Firewire</key>
-				<false/>
-				<key>HDA</key>
-				<false/>
-				<key>HDMI</key>
-				<false/>
-				<key>IDE</key>
-				<false/>
-				<key>IntelGFX</key>
-				<false/>
-				<key>LAN</key>
-				<false/>
-				<key>LPC</key>
-				<false/>
-				<key>NVidia</key>
-				<false/>
-				<key>SATA</key>
-				<false/>
-				<key>SmBUS</key>
-				<false/>
-				<key>USB</key>
-				<true/>
-				<key>WIFI</key>
-				<false/>
-			</dict>
 			<key>Fixes</key>
 			<dict>
 				<key>FixIPIC</key>
+				<true/>
+				<key>FixIntelGfx</key>
 				<true/>
 				<key>FixRTC</key>
 				<true/>
 				<key>FixTMR</key>
 				<true/>
-				<key>FixUSB_1000</key>
+			</dict>
+			<key>Patches</key>
+			<array>
+				<dict>
+					<key>Comment</key>
+					<string>change GFX0 to IGPU (RehabMan)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					R0ZYMA==
+					</data>
+					<key>Replace</key>
+					<data>
+					SUdQVQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change EHC1 to EH01</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					RUhDMQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUgwMQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change EHC2 to EH02</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					RUhDMg==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUgwMg==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change XHCI to XHC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					WEhDSQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WEhDXw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change XHC1 to XHC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					WEhDMQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WEhDXw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename H_EC to EC__</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					SF9FQw==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUNfXw==
+					</data>
+				</dict>
+			</array>
+		</dict>
+		<key>DropTables</key>
+		<array>
+			<dict>
+				<key>Signature</key>
+				<string>DMAR</string>
+			</dict>
+			<dict>
+				<key>Signature</key>
+				<string>MATS</string>
+			</dict>
+		</array>
+		<key>FixHeaders</key>
+		<true/>
+		<key>SSDT</key>
+		<dict>
+			<key>Generate</key>
+			<dict>
+				<key>PluginType</key>
 				<true/>
 			</dict>
 		</dict>
-		<key>FixHeaders</key>
-		<true/>
 	</dict>
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-v dart=0 nv_disable=1 kext-dev-mode=1 debug=0x100</string>
-		<key>Legacy</key>
-		<string>LegacyBiosDefault</string>
+		<string>kext-dev-mode=1 dart=0 debug=0x100 nv_disable=1</string>
+		<key>DefaultVolume</key>
+		<string>LastBootedVolume</string>
+		<key>Timeout</key>
+		<integer>0</integer>
 		<key>XMPDetection</key>
-		<false/>
+		<string>Yes</string>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -67,6 +146,16 @@
 		<dict>
 			<key>Inject</key>
 			<integer>1</integer>
+		</dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>device-id</key>
+				<data>
+				EgQAAA==
+				</data>
+			</dict>
 		</dict>
 		<key>USB</key>
 		<dict>
@@ -82,31 +171,39 @@
 	<dict>
 		<key>EmbeddedThemeType</key>
 		<string>Dark</string>
-		<key>Mouse</key>
-		<dict>
-			<key>Enabled</key>
-			<true/>
-		</dict>
+		<key>Hide</key>
+		<array>
+			<string>Preboot</string>
+			<string>VM</string>
+			<string>Recovery</string>
+		</array>
 		<key>Scan</key>
 		<dict>
 			<key>Entries</key>
 			<true/>
 			<key>Legacy</key>
 			<true/>
-			<key>Linux</key>
-			<false/>
 			<key>Tool</key>
 			<true/>
 		</dict>
-		<key>ScreenResolution</key>
-		<string>1920x1080</string>
 		<key>Theme</key>
-		<string>embedded</string>
+		<string>random</string>
+	</dict>
+	<key>Graphics</key>
+	<dict>
+		<key>EDID</key>
+		<dict>
+			<key>Inject</key>
+			<false/>
+		</dict>
+		<key>Inject</key>
+		<dict>
+			<key>Intel</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
-		<key>AppleIntelCPUPM</key>
-		<true/>
 		<key>AppleRTC</key>
 		<true/>
 		<key>KernelPm</key>
@@ -149,24 +246,6 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				igKEwHRC
-				</data>
-				<key>MatchOS</key>
-				<string>10.14.x</string>
-				<key>Name</key>
-				<string>new</string>
-				<key>Replace</key>
-				<data>
-				igKEwOtC
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>Disable panic kext logging on 10.13 debug kernel (credit vit9696)</string>
 				<key>Disabled</key>
 				<false/>
@@ -183,25 +262,61 @@
 				SIPEQF3D
 				</data>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				igKEwHRC
+				</data>
+				<key>MatchOS</key>
+				<string>10.14.x</string>
+				<key>Name</key>
+				<string>new</string>
+				<key>Replace</key>
+				<data>
+				igKEwOtC
+				</data>
+			</dict>
 		</array>
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>USB 10.13.6+ by PMHeart</string>
+				<string>USB 10.14.1+ (Mojave 10.14.3) by PMHeart</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				g32IDw+DpwQAAA==
+				g/sPD4MDBAAA
 				</data>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.usb.AppleUSBXHCI</string>
 				<key>Replace</key>
 				<data>
-				g32ID5CQkJCQkA==
+				g/sPkJCQkJCQ
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>External Icons Patch</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				RXh0ZXJuYWw=
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>AppleAHCIPort</string>
+				<key>Replace</key>
+				<data>
+				SW50ZXJuYWw=
 				</data>
 			</dict>
 		</array>
@@ -212,33 +327,39 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x3E7</string>
+		<key>MLB</key>
+		<string>C02140302D5DMT31M</string>
+		<key>ROM</key>
+		<string>UseMacAddr0</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>04/10/18</string>
+		<string>04/11/2019</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>IM112.88Z.005D.B00.1804101436</string>
+		<string>MM71.88Z.F000.B00.1904111917</string>
 		<key>Board-ID</key>
-		<string>Mac-F2238BAE</string>
+		<string>Mac-35C5E08120C7EEAF</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
+		<key>BoardSerialNumber</key>
+		<string>C02140302D5DMT31M</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
-		<string>iMac11,3</string>
+		<string>Macmini7,1</string>
 		<key>ChassisAssetTag</key>
-		<string>iMac-Aluminum</string>
+		<string>Mini-Aluminum</string>
 		<key>ChassisManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
-		<string>0x0D</string>
+		<string>0x0A</string>
 		<key>EfiVersion</key>
-		<string>96.0.0.0.0</string>
+		<string>242.0.0.0.0</string>
 		<key>Family</key>
-		<string>iMac</string>
+		<string>Mac mini</string>
 		<key>FirmwareFeatures</key>
 		<string>0xE00DE137</string>
 		<key>FirmwareFeaturesMask</key>
@@ -247,10 +368,14 @@
 		<string>Part Component</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
+		<key>PlatformFeature</key>
+		<string>0x03</string>
 		<key>ProductName</key>
-		<string>iMac11,3</string>
+		<string>Macmini7,1</string>
 		<key>SerialNumber</key>
-		<string>CK0140LNDNR</string>
+		<string>D25N25YAG1J0</string>
+		<key>SmUUID</key>
+		<string>7F480C35-999C-4154-9D6A-10980B7581FD</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
@@ -258,6 +383,8 @@
 	<dict>
 		<key>InjectKexts</key>
 		<string>Yes</string>
+		<key>InjectSystemID</key>
+		<true/>
 	</dict>
 </dict>
 </plist>
