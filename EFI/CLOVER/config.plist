@@ -328,7 +328,7 @@
 		<key>CsrActiveConfig</key>
 		<string>0x3E7</string>
 		<key>MLB</key>
-		<string>C02140302D5DMT31M</string>
+		<string></string>
 		<key>ROM</key>
 		<string>UseMacAddr0</string>
 	</dict>
@@ -345,7 +345,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02140302D5DMT31M</string>
+		<string></string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -373,7 +373,7 @@
 		<key>ProductName</key>
 		<string>Macmini7,1</string>
 		<key>SerialNumber</key>
-		<string>D25N25YAG1J0</string>
+		<string></string>
 		<key>SmUUID</key>
 		<string>7F480C35-999C-4154-9D6A-10980B7581FD</string>
 		<key>Version</key>
